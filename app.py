@@ -46,7 +46,7 @@ if st.button("Predict"):
         # Encode categorical features
         categorical_cols = ['gender', 'age', 'year_of_study', 'faculty', 'accommodation', 'commute_time',
                             'type_of_study', 'working', 'hours_work', 'internet',
-                            'availability_quiet_space', 'online_learning_tools_preferred']
+                            'availability_quiet_space']
 
         for col in categorical_cols:
             input_df[col] = le.fit_transform(input_df[col].astype(str))
