@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
 
 df = pd.read_csv('model_df.csv')
 st.set_page_config(page_title="Learning Mode Recommended for Students", layout="centered")
@@ -40,6 +41,15 @@ if st.button("Predict"):
     try:
         # Convert input to dataframe
         input_df = pd.DataFrame([user_input])
+        le = LabelEncoder()
+
+        # Encode categorical features
+        categorical_cols = ['gender', 'age', 'year_of_study', 'faculty', 'accommodation', 'commute_time',
+                            'type_of_study', 'working', 'hours_work', 'internet',
+                            'availability_quiet_space', 'online_learning_tools_preferred']
+
+        for col in categorical_cols:
+            input_df[col] = le.fit_transform(input_df[col].astype(str))
 
         # Load model filenames
         import os
