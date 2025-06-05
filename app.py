@@ -42,7 +42,7 @@ for mode in commute_modes:
     user_input[mode] = 1 if mode in selected_commute else 0
 
 # Load models and make predictions
-st.subheader("🔍 Recommended learning mode for each academic activity")
+st.subheader("🔍 Personalized Learning Mode for Each Academic Activity")
 
 if st.button("Recommend"):
     try:
@@ -66,7 +66,7 @@ if st.button("Recommend"):
             activity_name = model_file.split("_")[0]
             model = joblib.load(f"tuned_models/{model_file}")
             prediction = model.predict(input_df)[0]
-            st.markdown(f"**{activity_name}**: {'In-Person' if prediction == 1 else 'Online'}")
+            st.markdown(f"**⭐{activity_name}**       : {'In-Person' if prediction == 1 else 'Online'}")
 
     except Exception as e:
         st.error(f"Prediction failed: {e}")
