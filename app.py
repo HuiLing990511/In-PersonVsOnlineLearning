@@ -7,9 +7,9 @@ from sklearn.preprocessing import LabelEncoder
 df = pd.read_csv('model_df.csv')
 st.set_page_config(page_title="Learning Mode Recommended for Students", layout="centered")
 
-st.title("🎓 Learning Mode Recommended for Students for Each Academic Activity")
+st.title("🎓 Personalized Learning Mode Recommendations for Academic Activities")
 
-st.markdown("Fill in your profile below to get predictions for your preferred learning activities.")
+st.markdown("Fill in the student profile to get personalized study mode recommendations!")
 
 # Define input features
 single_select_features = ['gender', 'age', 'year_of_study', 'faculty',
@@ -25,7 +25,14 @@ user_input = {}
 st.subheader("📝 General Profile")
 for feature in single_select_features:
     options = sorted(df[feature].dropna().unique())
-    user_input[feature] = st.selectbox(f"{feature.replace('_', ' ').title()}:", options)
+
+    # Custom label for internet feature
+    if feature == 'internet':
+        label = "Internet Connectivity (1 = Poor, 4 = Good):"
+    else:
+        label = f"{feature.replace('_', ' ').title()}:"
+
+    user_input[feature] = st.selectbox(label, options)
 
 st.subheader("🚌 Commute Mode (Select all that apply)")
 selected_commute = st.multiselect("Commute Method:", commute_modes)
@@ -35,9 +42,9 @@ for mode in commute_modes:
     user_input[mode] = 1 if mode in selected_commute else 0
 
 # Load models and make predictions
-st.subheader("🔍 Predicted Preferences")
+st.subheader("🔍 Recommended learning mode for each academic activity")
 
-if st.button("Predict"):
+if st.button("Recommend"):
     try:
         # Convert input to dataframe
         input_df = pd.DataFrame([user_input])
@@ -59,7 +66,7 @@ if st.button("Predict"):
             activity_name = model_file.split("_")[0]
             model = joblib.load(f"tuned_models/{model_file}")
             prediction = model.predict(input_df)[0]
-            st.write(f"**{activity_name}** Preference: {'In-Person' if prediction == 1 else 'Online'}")
+            st.markdown(f"**{activity_name}**: {'In-Person' if prediction == 1 else 'Online'}")
 
     except Exception as e:
         st.error(f"Prediction failed: {e}")
