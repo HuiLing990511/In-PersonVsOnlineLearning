@@ -1,7 +1,7 @@
 Activity,Tuned Model,Accuracy,Precision,Recall,F1-Score,Best Params
-Exam,ExtraTreesClassifier,0.75,0.7590909090909091,0.75,0.7416666666666667,Default (no tuning grid provided)
-Lab,GradientBoostingClassifier,0.6666666666666666,0.6851851851851852,0.6666666666666666,0.6730462519936203,Default (no tuning grid provided)
+Exam,Perceptron,0.75,0.75,0.75,0.75,Default (no tuning grid provided)
+Lab,BaggingClassifier,0.6666666666666666,0.6851851851851852,0.6666666666666666,0.6730462519936203,Default (no tuning grid provided)
 Lecture,AdaBoostClassifier,0.7647058823529411,0.7647058823529411,0.7647058823529411,0.7647058823529411,Default (tuned was worse)
 Presentations,SVC,0.8333333333333334,0.8416666666666667,0.8333333333333334,0.834920634920635,Default (tuned was worse)
-Project,SGDClassifier,0.7647058823529411,0.8235294117647058,0.7647058823529411,0.7030812324929971,Default (no tuning grid provided)
+Project,PassiveAggressiveClassifier,0.7647058823529411,0.8235294117647058,0.7647058823529411,0.7030812324929971,Default (no tuning grid provided)
 Tutorial,LinearSVC,0.8823529411764706,0.8823529411764706,0.8823529411764706,0.8823529411764706,Default (tuned was worse)
