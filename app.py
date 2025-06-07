@@ -5,7 +5,8 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
 df = pd.read_csv('model_df.csv')
-df['hours_work'] = df['hours_work'].replace('','No working')
+df['hours_work'] = df['hours_work'].replace('', 'No working').fillna('No working')
+
 st.set_page_config(page_title="Learning Mode Recommended for Students", layout="centered")
 
 st.title("🎓 Personalized Learning Mode Recommendations for Academic Activities")
@@ -26,10 +27,7 @@ user_input = {}
 # Collect inputs
 st.subheader("📝 General Profile")
 for feature in single_select_features:
-    
-    options = sorted(df[feature].dropna().unique())
-
-    # Custom label for internet feature
+    options = sorted(df[feature].unique())
     if feature == 'internet':
         label = "Internet Connectivity (1 = Poor, 4 = Good):"
     else:
@@ -96,7 +94,6 @@ if st.button("Recommend"):
             'No': 0
         })
 
-
         input_df['hours_work'] = input_df['hours_work'].map({
             'No working': 0,
             'Less than 10 hours per week': 1,
@@ -115,7 +112,6 @@ if st.button("Recommend"):
 
         # Encode categorical features
         categorical_cols = ['gender', 'faculty']
-
         for col in categorical_cols:
             input_df[col] = le.fit_transform(input_df[col].astype(str))
 

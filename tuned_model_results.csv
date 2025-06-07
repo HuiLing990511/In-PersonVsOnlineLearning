@@ -1,7 +1,7 @@
 Activity,Tuned Model,Accuracy,Precision,Recall,F1-Score,Best Params
-Exam,LinearSVC,0.8125,0.8145833333333334,0.8125,0.8102226720647774,Default (tuned was worse)
+Exam,BaggingClassifier,0.8125,0.8687499999999999,0.8125,0.8102941176470588,Default (no tuning grid provided)
 Lab,KNeighborsClassifier,0.8,0.8148148148148148,0.8,0.8038277511961722,Default (no tuning grid provided)
-Lecture,GradientBoostingClassifier,0.7647058823529411,0.7892156862745098,0.7647058823529411,0.7663398692810458,Default (no tuning grid provided)
-Presentations,GradientBoostingClassifier,0.7777777777777778,0.7811965811965812,0.7777777777777778,0.7685185185185186,Default (no tuning grid provided)
-Project,LogisticRegressionCV,0.7058823529411765,0.49826989619377166,0.7058823529411765,0.5841784989858012,Default (no tuning grid provided)
-Tutorial,RidgeClassifierCV,0.8235294117647058,0.8588235294117648,0.8235294117647058,0.795518207282913,Default (no tuning grid provided)
+Lecture,AdaBoostClassifier,0.8235294117647058,0.8316993464052288,0.8235294117647058,0.8247678018575851,Default (tuned was worse)
+Presentations,AdaBoostClassifier,0.7777777777777778,0.837037037037037,0.7777777777777778,0.7504273504273505,Default (tuned was worse)
+Project,ExtraTreeClassifier,0.7647058823529411,0.7507002801120448,0.7647058823529411,0.744343891402715,Default (no tuning grid provided)
+Tutorial,RandomForestClassifier,0.8235294117647058,0.8178733031674208,0.8235294117647058,0.8172549019607844,Default (no tuning grid provided)
