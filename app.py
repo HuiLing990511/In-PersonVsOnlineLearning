@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
 df = pd.read_csv('model_df.csv')
+df['hours_work'] = df['hours_work'].replace('','No working')
 st.set_page_config(page_title="Learning Mode Recommended for Students", layout="centered")
 
 st.title("🎓 Personalized Learning Mode Recommendations for Academic Activities")
@@ -15,7 +16,8 @@ st.markdown("Fill in the student profile to get personalized study mode recommen
 single_select_features = ['gender', 'age', 'year_of_study', 'faculty',
                           'accommodation', 'commute_time', 'type_of_study',
                           'working', 'hours_work', 'internet',
-                          'availability_quiet_space']
+                          'availability_quiet_space'
+                          ]
 
 commute_modes = ['Driving', 'University bus', 'Grab/MyCar/Taxi', 'Public transport', 'Walking', 'Carpool']
 
@@ -24,6 +26,7 @@ user_input = {}
 # Collect inputs
 st.subheader("📝 General Profile")
 for feature in single_select_features:
+    
     options = sorted(df[feature].dropna().unique())
 
     # Custom label for internet feature
